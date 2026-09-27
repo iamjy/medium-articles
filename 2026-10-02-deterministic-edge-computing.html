@@ -13,6 +13,7 @@ pre{background:#f4f4f4;padding:1rem;overflow-x:auto;border-radius:6px;font-size:
 code{font-family:Menlo,Consolas,monospace}
 p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 .meta{color:#666;font-size:.9rem}
+figure{margin:2rem 0}figure img{width:100%;height:auto;border-radius:8px;display:block}figcaption{color:#666;font-size:.85rem;text-align:center;margin-top:.5rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -21,6 +22,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <h1>The Return of Deterministic Edge Computing</h1>
 
 <p>A few years ago, every robotics roadmap I read ended with an arrow pointing up — to the cloud. Inference would live in the data center, models would be enormous, and the edge was just a sensor tap feeding the machine upstairs. Four years later, the arrow has reversed. The most interesting embedded systems being built today are designed on a radical premise: the network is optional. The control loop closes at the physical edge, inside the machine itself, in microseconds — and nothing leaves the factory floor unless the factory decides it should.</p>
+<figure>
+<img src="assets/viz-5a.jpg" alt="Pendulum swinging from cloud back to the edge">
+<figcaption>The arrow has reversed: from cloud-bound roadmaps back to the edge.</figcaption>
+</figure>
+
 
 <p>This is the quiet rebirth of deterministic edge computing. Neural accelerators are now natively integrated into MCU and MPU architectures, so independent AI inference and ultra-precise real-time control run side by side in the same chip. Local voice AI and robot SLAM operate inside microsecond-level RTOS control environments. The edge-computing landscape is being redrawn fast — and a flurry of September announcements shows exactly how.</p>
 
@@ -39,12 +45,22 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <h2>A Voice Assistant That Never Phones Home</h2>
 
 <p>Alif Semiconductor unveiled an on-device voice-AI architecture that performs speech recognition, information retrieval, and speech synthesis entirely on a standalone MCU — no cloud connection, no subscription API. What makes it remarkable is what it deliberately does <em>not</em> use: instead of an external large language model, it performs deterministic retrieval over pre-validated technical documents and safety instructions stored in on-chip flash.</p>
+<figure>
+<img src="assets/viz-5c.jpg" alt="Deterministic on-chip retrieval, cloud crossed out">
+<figcaption>Deterministic retrieval from on-chip flash — no cloud, no hallucination, no per-query cost.</figcaption>
+</figure>
+
 
 <p>The payoff is threefold: zero cloud-call cost and therefore zero operational cost per query, hallucination-free responses because nothing is generated beyond the validated corpus, and instant voice assistance for vehicle controls and high-risk factory equipment interfaces. As the <a href="https://www.astutegroup.com/news/general/edge-ai-on-mcus-brings-fully-local-voice-ai-to-embedded-systems/">Astute Group analysis</a> notes, deterministic retrieval AI running entirely inside on-chip NPUs and embedded flash guarantees consistent sub-tens-of-milliseconds response and full security certification — even with the network physically cut. For a technician talking to a press brake or a driver talking to a control panel, that is the difference between a demo and a product.</p>
 
 <h2>One MCU, the Whole Robot Brain</h2>
 
 <p>At Embedded World North America, GigaDevice demonstrated an embodied-robotics platform built on its flagship GD32H7 MCU — a 600 MHz Cortex-M7 — handling real-time vision recognition, SLAM, sensor fusion, and motor joint control (linked with the GD32F505) as a single pipeline. Pause on that: perception, localization, and actuation, once distributed across multiple boards and often a cloud backend, now collapse into one microcontroller pipeline.</p>
+<figure>
+<img src="assets/viz-5b.jpg" alt="Whole robot brain collapsed into one MCU">
+<figcaption>Vision, SLAM, sensor fusion, and motor control collapse into one MCU pipeline.</figcaption>
+</figure>
+
 
 <p>GigaDevice also officially <a href="https://www.gigadevice.com/about/news-and-event/news/gigadevice-intelligence-at-the-edge-embedded-world-north-america">joined the Zephyr Project</a>, the open real-time operating system, greatly expanding mission-critical real-time control-stack compatibility across multi-vendor hardware. This matters as much as the silicon: a portable, deterministic RTOS stack means the same control software can follow the same hardware logic across vendors, instead of being trapped in a proprietary board-support package.</p>
 

@@ -13,6 +13,7 @@ pre{background:#f4f4f4;padding:1rem;overflow-x:auto;border-radius:6px;font-size:
 code{font-family:Menlo,Consolas,monospace}
 p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 .meta{color:#666;font-size:.9rem}
+figure{margin:2rem 0}figure img{width:100%;height:auto;border-radius:8px;display:block}figcaption{color:#666;font-size:.85rem;text-align:center;margin-top:.5rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -20,10 +21,20 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <p class="meta">Physical AI &amp; Digital Twins &middot; September 29, 2026 &middot; 5 min read</p>
 <h1>The Digital Thread Is Becoming a Living System</h1>
 <p>For most of the last decade, the digital thread was treated as plumbing — a project to stitch planning, CAD design, CAE analysis, BOM production planning, MES execution, supply-chain management, and maintenance data into one continuous pipeline. Worthy, but static: a system of record. In 2026, that framing is being retired. The industry is shifting toward something else entirely — an <em>agentic decision backbone</em>, where autonomous agents and generative AI detect changes in real time and dynamically alter process plans. The thread is no longer a repository. It is becoming a living system.</p>
+<figure>
+<img src="assets/viz-2a.jpg" alt="Digital thread lifecycle pipeline illustration">
+<figcaption>The classic digital thread: one continuous pipeline from planning to maintenance.</figcaption>
+</figure>
+
 
 <h2>From System of Record to Decision Backbone</h2>
 <p>The classic digital thread was the interoperability architecture spanning the full product lifecycle: planning, CAD, CAE, BOM, MES, SCM, MRO. Every phase connected, every change traceable. It was a triumph of data hygiene, and it mostly produced dashboards.</p>
 <p><a href="https://www.microsoft.com/en-us/microsoft-cloud/blog/manufacturing/2026/03/16/manufacturing-at-the-2026-inflection-point-how-frontier-companies-are-entering-the-agentic-era/">Microsoft's global manufacturing analysis</a> argues the decisive shift: in 2026 the thread is turning from a static data repository into a living system that autonomously judges real-time changes. Beyond personal Copilot assistants, multi-agent systems now orchestrate the whole loop — design change, simulation, manufacturability review, schedule change — as one continuous motion. The thread doesn't just record decisions anymore; it participates in them.</p>
+<figure>
+<img src="assets/viz-2c.jpg" alt="Static record versus living system illustration">
+<figcaption>From system of record to living system: the thread starts participating in decisions.</figcaption>
+</figure>
+
 
 <h2>What a Living System Looks Like in Practice</h2>
 <p>The examples are concrete. Mars, with 124 plants, and Epiroc, the Swedish mining-equipment maker, both now link multilingual, unstructured field feedback with Siemens Teamcenter engineering data in real time. A note from a field technician arrives in one language and reaches the engineering data model in another — no human translator in between.</p>
@@ -36,6 +47,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <h2>The Loop Finally Closes on the Shop Floor</h2>
 <p>The hardest silo was measurement. Data from CMMs, optical scanners, and vision sensors used to sit in quarantine — isolated, inspected only after the fact for defect detection. Now, via open metrology interfaces, measurement data is back-propagated into the digital thread in real time, <a href="https://metrology.news/digital-manufacturing-workflow-from-digital-thread-to-closed-loop/">as reported in digital manufacturing workflow coverage</a>.</p>
 <p>Cumulative tolerance variation and machine drift now feed instantly back into CAD parameters and CAM machining parameters. The design literally adjusts to what the machines are doing. First-pass yield climbs, and adaptation to design changes shrinks from weeks to near-real-time. This is the living system in its most literal form: the factory telling the model what it learned today.</p>
+<figure>
+<img src="assets/viz-2b.jpg" alt="Closed-loop metrology feedback illustration">
+<figcaption>The loop closes: measurement data flows back into CAD/CAM in real time.</figcaption>
+</figure>
+
 
 <h2>Why Most Programs Still Stall</h2>
 <p>And yet the gap between leaders and everyone else is wide. A joint <a href="https://www.manufacturingdive.com/news/ey-defense-aerospace-industries-association-digital-threads-report-2026/822394/">AIA/EY survey</a> found 56% of companies are still at the PoC or local-pilot stage — and only about 1 in 7, roughly 14%, has built an enterprise end-to-end digital thread. The blocker isn't technology. It's sponsorship.</p>

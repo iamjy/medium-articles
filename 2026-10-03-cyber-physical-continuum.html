@@ -13,6 +13,7 @@ pre{background:#f4f4f4;padding:1rem;overflow-x:auto;border-radius:6px;font-size:
 code{font-family:Menlo,Consolas,monospace}
 p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 .meta{color:#666;font-size:.9rem}
+figure{margin:2rem 0}figure img{width:100%;height:auto;border-radius:8px;display:block}figcaption{color:#666;font-size:.85rem;text-align:center;margin-top:.5rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -35,6 +36,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <p>Layer 4 is semantic governance — the knowledge and rules layer — home of the Digital Ontology. Here, domain concepts and their relations are made explicit, and enterprise unstructured data is organized into real-time knowledge graphs. Its job is governance: it blocks AI-agent hallucination by validating every proposed action against engineering constraints, and it gives raw sensor readings their meaning. Without it, the layers below are fast and the layers above are blind — nothing in the middle can tell truth from plausible fiction.</p>
 
 <p>Layer 5 is the manufacturing and operations decision layer — ISA-95 Level 4, the ERP/PLM domain — where the Digital Thread guarantees lifecycle continuity across planning, design (CAD), process (BOM), and service history, and where enterprise decisions are formed and propagated downward. This is the layer that remembers why a machine was configured the way it was three years ago, and makes sure today's autonomous decisions stay consistent with that history.</p>
+<figure>
+<img src="assets/viz-6a.jpg" alt="Five-layer cyber-physical stack diagram">
+<figcaption>The cyber-physical continuum: five interlocking layers from shop floor to decision layer.</figcaption>
+</figure>
+
 
 <p>The architecture's power is not in any single layer. It is in the interlocking: Layer 1's contact data refines Layer 3's simulations through the thread; Layer 4's ontology constrains Layer 2's and Layer 1's agent decisions; Layer 5's lifecycle knowledge keeps every layer honest about change. Break one link and the continuum degrades into the pile of disconnected pilots most factories are running today.</p>
 
@@ -69,6 +75,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <p>That is the roadmap this series has been building toward, piece by piece: <a href="https://iamjy.github.io/medium-articles/2026-09-28-physical-ai-goes-to-work.html">Physical AI Goes to Work: 7,000 Humanoids, Toyota's $6.4B Bet, and the Race for the Physical Substrate</a> covered the physical substrate — humanoid robots on VLA models and Sim-to-Real policies. <a href="https://iamjy.github.io/medium-articles/2026-09-29-digital-thread-living-system.html">The Digital Thread Is Becoming a Living System</a> showed lifecycle data flowing from CAD to service history and back. <a href="https://iamjy.github.io/medium-articles/2026-09-30-ontology-not-graph-database.html">An Ontology Is Not a Graph Database: What Industrial AI Actually Needs</a> made the case for semantic governance as the antidote to hallucination. <a href="https://iamjy.github.io/medium-articles/2026-10-01-monolithic-twin-is-dead.html">The Monolithic Digital Twin Is Dead: Composable Twins and Synchronization Contracts</a> argued for modular ISO 23247 twins bound by engineering contracts. And <a href="https://iamjy.github.io/medium-articles/2026-10-02-deterministic-edge-computing.html">The Return of Deterministic Edge Computing</a> covered the NPU-equipped MCU/MPU and Zephyr RTOS substrate that keeps Layer 2 alive when the network dies.</p>
 
 <p>Now the pieces have a map. The continuum is not a vision statement; it is an engineering plan — five layers, four priorities, one direction. Start with the semantics, compose the twins, harden the edge, and close the Sim-to-Real loop. The factory that does all four stops being a building full of machines and becomes a system that learns.</p>
+<figure>
+<img src="assets/viz-6b.jpg" alt="Four priorities roadmap illustration">
+<figcaption>Four priorities, one direction: semantics first, composable twins, hardened edge, closed Sim-to-Real loop.</figcaption>
+</figure>
+
 </article>
 </body>
 </html>

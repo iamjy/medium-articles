@@ -13,6 +13,7 @@ pre{background:#f4f4f4;padding:1rem;overflow-x:auto;border-radius:6px;font-size:
 code{font-family:Menlo,Consolas,monospace}
 p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 .meta{color:#666;font-size:.9rem}
+figure{margin:2rem 0}figure img{width:100%;height:auto;border-radius:8px;display:block}figcaption{color:#666;font-size:.85rem;text-align:center;margin-top:.5rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -33,6 +34,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <h2>Compose the arm and the gripper, then compose the line</h2>
 
 <p>The alternative is the composable twin: build small, well-defined components and assemble them through standardized interfaces. NIST researchers demonstrated the technique on the ISO 23247-6 standard framework: the robot-arm twin and the gripper twin are built as independent components, then composed into the higher-level integrated system through standardized I/O interfaces. Swap the gripper, and you swap one component — not rebuild the factory model.</p>
+<figure>
+<img src="assets/viz-4a.jpg" alt="Composable twin modules diagram">
+<figcaption>Composable twins: arm and gripper as independent modules joined by standard interfaces.</figcaption>
+</figure>
+
 
 <p>This is not a cosmetic change. A composable architecture radically lowers reconfiguration and maintenance cost because change propagates only where the interface contract says it may. Standardized I/O interfaces turn the twin from a bespoke sculpture into a bill of materials. When the line is reconfigured for a new product, the twin is reconfigured the same way the line is: piece by piece.</p>
 
@@ -41,6 +47,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <p>Composable is only half of the story. The other half is the technical leap that separates today's twins from yesterday's dashboards: adaptive closed-loop twins that reverse-control process parameters in real time, instead of merely visualizing them.</p>
 
 <p>GE Vernova's Advanced Research center, together with the University of Delaware, built exactly this for carbon-fiber-reinforced polymer (CFRP) composite manufacturing. Ultrasonic and fiber-optic sensors feed real-time process monitoring; physics-based numerics and machine-learning surrogate models predict resin flow and curing behavior live; and the twin autonomously adjusts temperature and pressure parameters in response. The result is not a nicer screen — it is composite defect rates suppressed at the root, by a twin that acts, not one that watches.</p>
+<figure>
+<img src="assets/viz-4b.jpg" alt="Closed-loop twin control diagram">
+<figcaption>A closed-loop twin senses the process and writes adjustments back in real time.</figcaption>
+</figure>
+
 
 <p>The market numbers tell the same story about where the value is moving. The <a href="https://www.openpr.com/news/4640849/united-states-digital-twin-technology-in-manufacturing-market">U.S. digital twin technology in manufacturing market</a> is being driven by closed-loop and lifecycle applications, not visualization. The twin's job description has changed: from <em>showing</em> the process to <em>steering</em> it.</p>
 
@@ -53,6 +64,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <h2>The contract nobody wants to sign</h2>
 
 <p>Here is where the industry's marketing breaks down. Many vendors hide behind the vague phrase "real-time sync." It sounds precise and means nothing. Architecturally, you must define update cadence, maximum acceptable latency, and the behavior of the twin when data is late, missing, or stale — as explicit contracts, not as aspiration.</p>
+<figure>
+<img src="assets/viz-4c.jpg" alt="Synchronization contract illustration">
+<figcaption>The synchronization contract: cadence, latency bounds, and stale-data behavior, made explicit.</figcaption>
+</figure>
+
 
 <p>A twin built without a synchronization contract is just graphics. That is the hard line from the IFAC column: without explicit synchronization terms, a twin can never serve as the control basis for industrial AI agents. An agent that actuates through a twin needs to know exactly how fresh its world model is and what to do when freshness guarantees break. "Real-time" is a marketing word; a latency budget is an engineering artifact.</p>
 

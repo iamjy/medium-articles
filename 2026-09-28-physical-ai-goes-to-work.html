@@ -13,6 +13,7 @@ pre{background:#f4f4f4;padding:1rem;overflow-x:auto;border-radius:6px;font-size:
 code{font-family:Menlo,Consolas,monospace}
 p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 .meta{color:#666;font-size:.9rem}
+figure{margin:2rem 0}figure img{width:100%;height:auto;border-radius:8px;display:block}figcaption{color:#666;font-size:.85rem;text-align:center;margin-top:.5rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -21,6 +22,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <h1>Physical AI Goes to Work: 7,000 Humanoids, Toyota's $6.4B Bet, and the Race for the Physical Substrate</h1>
 <p>Last year the world shipped about 7,000 humanoid robots for industrial and professional service use, <a href="https://www.techrepublic.com/article/news-humanoid-robot-sales-7000-workplace-pilots/">according to the International Federation of Robotics</a>. If you expected a factory floor crowded with tireless metal workers, look again: most of those machines are still pilots running in labs or gathering field data. Roughly three-quarters of Unitree's shipments went not to factories but to universities and research institutes, whose real product is the algorithm training data the robots collect.</p>
 <p>That gap between shipment numbers and real deployment is exactly where the next phase of the AI race will be decided. Forecasts see 2026 humanoid shipments topping 90,000 units and reaching 1.2 million per year by 2030, with the embodied-AI robotics market climbing toward tens of billions of dollars. The industry itself is quietly moving the goalposts: the question is no longer "how flashy is the demo?" but "what is your uptime, and what is your task-completion rate?" This article is about that transition — from spectacle to substrate — and the national strategies forming around it.</p>
+<figure>
+<img src="assets/viz-1c.jpg" alt="Humanoid shipment growth illustration">
+<figcaption>Humanoid shipments: ~7,000 in 2025, a projected 90,000 in 2026, and 1.2M per year by 2030.</figcaption>
+</figure>
+
 
 <h2>Toyota's trillion-yen wake-up call</h2>
 <p>No single announcement captures the moment better than Toyota Motor's plan, <a href="https://www.artificialintelligence-news.com/news/toyota-physical-ai-factory-robotics/">reported this month</a>, to invest roughly 1 trillion yen per year — about $6.4 billion — starting in 2028 on automation across its production lines, subsidiaries, and tier-1 suppliers. The target: some 400,000 intelligent robots.</p>
@@ -29,6 +35,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 
 <h2>How the models actually learn: sim-to-real becomes the standard</h2>
 <p>The technical enabler is the sim-to-real pipeline that has become the industry's default. Thousands of robots train in parallel inside large physics simulations — NVIDIA Isaac Lab, Cosmos world models, Omniverse — and the resulting weights are transferred to real hardware. Simulation gives what the real world cannot: infinite, dangerous, edge-case-rich experience at machine speed.</p>
+<figure>
+<img src="assets/viz-1a.jpg" alt="Sim-to-real pipeline illustration">
+<figcaption>The sim-to-real pipeline: thousands of robots train in simulation; the learned weights transfer to real hardware.</figcaption>
+</figure>
+
 <p>But the models are improving on the transfer side too. <a href="https://www.pi.website/">Physical Intelligence</a>, whose publicly shared models have become a reference point, has demonstrated real-world reinforcement-learning policies with sharply improved generalization on open-ended manipulation. Its real-time 'action chunking' algorithm holds precision even under high-latency communication, and its 'FAST' action tokenizer speeds up training fivefold. These are the unglamorous, load-bearing advances — latency tolerance, training throughput — that move systems from lab to line.</p>
 <p>Japan is treating this capability as a sovereign asset. METI and NEDO have launched a national project led by Noetra and AIST to secure a sovereign physical-AI foundation model by 2030 — while keeping factory data inside the country. The premise: whoever trains on the richest factory data wins the foundation model for physical work.</p>
 
@@ -36,6 +47,11 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <p>China installed 295,000 industrial robots in 2024 — 54% of the global total. In 2025, Chinese firms supplied over 90% of humanoid robot shipments: AgiBot at 5,000+ units, Unitree at 4,200+. And China's MIIT established a humanoid-robot and embodied-intelligence standardization committee in December 2025, meaning Beijing intends to write the rules of the physical layer, not just ship its hardware.</p>
 <p>The United States still leads where it has always led: frontier foundation models, GPUs (NVIDIA holds 80–90% share), private capital, and simulation software. But that lead comes with a physical constraint of its own — power-grid bottlenecks for the data centers that train the models. Intelligence is becoming an infrastructure problem.</p>
 <p>And then there is the choke point almost nobody talks about. Both the West and China depend on German firms (Bosch Rexroth, Schaeffler) and Japanese firms (THK, NSK) for ultra-precision ball screws and reducers — components that hold roughly 90% of the world market. You can win the model race and still lose the factory floor if someone else makes the joints. Hardware supply chains are a growing risk, and 90% concentration in any market is not resilience; it is a bet.</p>
+<figure>
+<img src="assets/viz-1b.jpg" alt="US and China robot ambitions narrowing through a shared precision-component choke point">
+<figcaption>Both blocs' robot ambitions narrow through one choke point: ultra-precision components.</figcaption>
+</figure>
+
 
 <h2>The real race: from virtual reasoning to spatial intelligence</h2>
 <p>This is where the columnist Beniamino Irdi, writing for the German Marshall Fund, reframes the entire contest. <a href="https://www.gmfus.org/news/ai-race-enters-physical-world">As he argues</a>, the AI race is splitting away from virtual reasoning — the LLMs — toward 'spatial intelligence' and world models that adapt to friction, error, and contact dynamics. High-level semantic task decomposition can stay virtual. But completing physical work depends on physical data streams from the real world.</p>

@@ -13,6 +13,7 @@ pre{background:#f4f4f4;padding:1rem;overflow-x:auto;border-radius:6px;font-size:
 code{font-family:Menlo,Consolas,monospace}
 p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 .meta{color:#666;font-size:.9rem}
+figure{margin:2rem 0}figure img{width:100%;height:auto;border-radius:8px;display:block}figcaption{color:#666;font-size:.85rem;text-align:center;margin-top:.5rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -29,12 +30,22 @@ p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
 <p>A digital ontology is a semantic data model that formalizes the entities in a physical operating environment — machines, operators, materials, processes — along with their semantic relationships and constraints, in machine-readable form. It fills the semantic gap between raw data and intelligent agents, acting as a deterministic verification layer that blocks AI hallucination at the source.</p>
 
 <p>The crucial technical point: an ontology is not the data. It is the top-level schema — the <code>TBox</code> (terminology box) that defines classes, relations, and physical constraints — strictly separated from the actual store where data instances live, the <code>ABox</code> (assertion box). A graph database is a container for instances. An ontology is the set of rules that makes those instances mean something. Confusing the two is, as <a href="https://xmpro.com/an-ontology-is-not-a-graph-database/">XMPro's editorial on the subject</a> puts it, the most common grave mistake on plant floors.</p>
+<figure>
+<img src="assets/viz-3a.jpg" alt="TBox versus ABox separation diagram">
+<figcaption>TBox is the schema that defines meaning; ABox is the store that holds instances.</figcaption>
+</figure>
+
 
 <p>No single database can hold all of an enterprise's industrial data anyway. A real production ontology is a "virtual knowledge graph" that links time-series historians, ERP, engineering documents, and sensor streams without replicating them — plus a "semantic gatekeeper" that blocks AI agents from attempting invalid data operations. Unless ontology is treated as a governance framework rather than a store, industrial AI projects cannot escape structural failure.</p>
 
 <h2>The three layers industrial AI is standardizing on</h2>
 
 <p>Without ontology layered over raw time-series data and fragmented ERP/MES records, AI agents misread machine-tag context and hallucinate badly — a failure mode documented in <a href="https://www.hivemq.com/resources/building-ontology-driven-intelligence-for-industrial-ai-agents/">HiveMQ's technical whitepaper</a> on ontology-driven industrial AI agents. The industry response is converging on a three-layer structure: the semantic model (concept definitions), the domain ontology (equipment and engineering rules), and the knowledge graph (real-time instance mapping).</p>
+<figure>
+<img src="assets/viz-3b.jpg" alt="Three-layer semantic stack diagram">
+<figcaption>The converging three-layer stack: semantic model, domain ontology, knowledge graph.</figcaption>
+</figure>
+
 
 <p>In this architecture, agents traverse the knowledge graph at inference time and validate every step against the ontology schema, enabling error-free process optimization and anomaly diagnosis. The schema is what keeps an agent from concluding that a temperature setpoint belongs to a conveyor belt or that a maintenance window applies to a running furnace.</p>
 
@@ -71,6 +82,11 @@ Motor-M12 --hasConstraint--&gt; maxLoad: 50t   # valid: constraint inherited
 Crane-07 --causedBy--&gt; Report-221           # INVALID: blocked by schema</code></pre>
 
 <p>That last line is the whole point. The schema refuses the nonsense before it ever reaches the agent — the semantic gatekeeper in miniature.</p>
+<figure>
+<img src="assets/viz-3c.jpg" alt="Semantic gatekeeper blocking an invalid triple">
+<figcaption>The semantic gatekeeper: the schema blocks invalid triples before they reach the agent.</figcaption>
+</figure>
+
 
 <h2>Ontology is governance, not storage</h2>
 
