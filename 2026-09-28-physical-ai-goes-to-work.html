@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Physical AI Goes to Work: 7,000 Humanoids, Toyota's $6.4B Bet, and the Race for the Physical Substrate</title>
+<meta name="description" content="Humanoid robot shipments are projected to jump from 7,000 to 90,000 this year — but Toyota's trillion-yen automation bet shows the real contest is over who owns the physical substrate and its data.">
+<style>
+body{font-family:Georgia,'Times New Roman',serif;max-width:700px;margin:0 auto;padding:2rem 1.25rem;line-height:1.75;color:#1a1a1a}
+h1{font-size:2rem;line-height:1.3}
+h2{font-size:1.4rem;margin-top:2.5rem}
+pre{background:#f4f4f4;padding:1rem;overflow-x:auto;border-radius:6px;font-size:.9rem;line-height:1.5}
+code{font-family:Menlo,Consolas,monospace}
+p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
+.meta{color:#666;font-size:.9rem}
+</style>
+</head>
+<body>
+<article>
+<p class="meta">Physical AI &amp; Digital Twins &middot; September 28, 2026 &middot; 5 min read</p>
+<h1>Physical AI Goes to Work: 7,000 Humanoids, Toyota's $6.4B Bet, and the Race for the Physical Substrate</h1>
+<p>Last year the world shipped about 7,000 humanoid robots for industrial and professional service use, <a href="https://www.techrepublic.com/article/news-humanoid-robot-sales-7000-workplace-pilots/">according to the International Federation of Robotics</a>. If you expected a factory floor crowded with tireless metal workers, look again: most of those machines are still pilots running in labs or gathering field data. Roughly three-quarters of Unitree's shipments went not to factories but to universities and research institutes, whose real product is the algorithm training data the robots collect.</p>
+<p>That gap between shipment numbers and real deployment is exactly where the next phase of the AI race will be decided. Forecasts see 2026 humanoid shipments topping 90,000 units and reaching 1.2 million per year by 2030, with the embodied-AI robotics market climbing toward tens of billions of dollars. The industry itself is quietly moving the goalposts: the question is no longer "how flashy is the demo?" but "what is your uptime, and what is your task-completion rate?" This article is about that transition — from spectacle to substrate — and the national strategies forming around it.</p>
+
+<h2>Toyota's trillion-yen wake-up call</h2>
+<p>No single announcement captures the moment better than Toyota Motor's plan, <a href="https://www.artificialintelligence-news.com/news/toyota-physical-ai-factory-robotics/">reported this month</a>, to invest roughly 1 trillion yen per year — about $6.4 billion — starting in 2028 on automation across its production lines, subsidiaries, and tier-1 suppliers. The target: some 400,000 intelligent robots.</p>
+<p>Toyota is not spending that money on a vision video. Its Kamigo plant has already taken a piston assembly line from 3-person teams to fully unmanned operation. At the Higashinihon plant, the 'KumiPro' parts-picking robot uses force-feedback control to correct camera error instantly — the kind of contact-rich manipulation that separates a demo from a production asset. And Toyota Research Institute, together with Boston Dynamics, has demonstrated a single Large Behavior Model (LBM) integrating walking, lifting, sorting, and packing — one policy brain for many physical skills.</p>
+<p>Across the Pacific, Hyundai Motor Group is following the same playbook: it plans to deploy next-generation electric Atlas robots at its Georgia Metaplant (HMGMA), beginning with sequencing processes in 2028 and expanding to precision assembly by 2030. The automakers, the companies that industrialized the twentieth century, now intend to industrialize embodied AI.</p>
+
+<h2>How the models actually learn: sim-to-real becomes the standard</h2>
+<p>The technical enabler is the sim-to-real pipeline that has become the industry's default. Thousands of robots train in parallel inside large physics simulations — NVIDIA Isaac Lab, Cosmos world models, Omniverse — and the resulting weights are transferred to real hardware. Simulation gives what the real world cannot: infinite, dangerous, edge-case-rich experience at machine speed.</p>
+<p>But the models are improving on the transfer side too. <a href="https://www.pi.website/">Physical Intelligence</a>, whose publicly shared models have become a reference point, has demonstrated real-world reinforcement-learning policies with sharply improved generalization on open-ended manipulation. Its real-time 'action chunking' algorithm holds precision even under high-latency communication, and its 'FAST' action tokenizer speeds up training fivefold. These are the unglamorous, load-bearing advances — latency tolerance, training throughput — that move systems from lab to line.</p>
+<p>Japan is treating this capability as a sovereign asset. METI and NEDO have launched a national project led by Noetra and AIST to secure a sovereign physical-AI foundation model by 2030 — while keeping factory data inside the country. The premise: whoever trains on the richest factory data wins the foundation model for physical work.</p>
+
+<h2>The scoreboard nobody wants to look at</h2>
+<p>China installed 295,000 industrial robots in 2024 — 54% of the global total. In 2025, Chinese firms supplied over 90% of humanoid robot shipments: AgiBot at 5,000+ units, Unitree at 4,200+. And China's MIIT established a humanoid-robot and embodied-intelligence standardization committee in December 2025, meaning Beijing intends to write the rules of the physical layer, not just ship its hardware.</p>
+<p>The United States still leads where it has always led: frontier foundation models, GPUs (NVIDIA holds 80–90% share), private capital, and simulation software. But that lead comes with a physical constraint of its own — power-grid bottlenecks for the data centers that train the models. Intelligence is becoming an infrastructure problem.</p>
+<p>And then there is the choke point almost nobody talks about. Both the West and China depend on German firms (Bosch Rexroth, Schaeffler) and Japanese firms (THK, NSK) for ultra-precision ball screws and reducers — components that hold roughly 90% of the world market. You can win the model race and still lose the factory floor if someone else makes the joints. Hardware supply chains are a growing risk, and 90% concentration in any market is not resilience; it is a bet.</p>
+
+<h2>The real race: from virtual reasoning to spatial intelligence</h2>
+<p>This is where the columnist Beniamino Irdi, writing for the German Marshall Fund, reframes the entire contest. <a href="https://www.gmfus.org/news/ai-race-enters-physical-world">As he argues</a>, the AI race is splitting away from virtual reasoning — the LLMs — toward 'spatial intelligence' and world models that adapt to friction, error, and contact dynamics. High-level semantic task decomposition can stay virtual. But completing physical work depends on physical data streams from the real world.</p>
+<p>Follow the logic to its conclusion: hegemony in the physical-AI era goes not to whoever codes the best algorithm, but to whoever deploys machines at scale in physical environments and continuously recovers operational data to retrain models. The factory is the dataset. Uptime is the moat.</p>
+<p>That is why Toyota's trillion yen matters more than any single robot demo. That is why three-quarters of Unitree's machines live in labs collecting data. That is why METI wants a sovereign foundation model and MIIT wants to set the standards. Everyone has understood the same thing: the algorithm era taught us that data wins; the physical era is teaching us that physical data wins, and physical data only comes from machines actually working.</p>
+<p>The market, meanwhile, is projecting the steep ramp — <a href="https://www.openpr.com/news/4612316/humanoid-embodied-ai-robotics-market-to-reach-us-34-37-billion">analysts put the embodied-AI robotics market on a path to $34.37 billion</a> — and the 90,000-unit year ahead. Whether those machines end up working or watching will be the difference between a bubble and an industrial revolution. The winners will be the ones who measure uptime, not applause.</p>
+</article>
+</body>
+</html>
