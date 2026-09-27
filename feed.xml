@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>louis — Tech Articles for Medium</title>
+    <link>https://iamjy.github.io/medium-articles/</link>
+    <description>Daily English tech articles (Python-Cookbook, DevOps, AI Context &amp; Prompt Engineering) for import into Medium publications.</description>
+    <language>en</language>
+    <item>
+      <title>Python Context Managers: Write Cleaner, Safer Code with the with Statement</title>
+      <link>https://iamjy.github.io/medium-articles/2026-09-28-python-context-managers.html</link>
+      <guid isPermaLink="true">https://iamjy.github.io/medium-articles/2026-09-28-python-context-managers.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 +0900</pubDate>
+      <category>Python-Cookbook</category>
+      <description>Learn how Python context managers work, why the with statement beats try/finally boilerplate, and how to write your own with classes or contextlib.</description>
+      <content:encoded><![CDATA[
+<p>If you followed this series, you already know how to read and write files with <code>open()</code>. But if an exception fires between <code>open()</code> and <code>close()</code>, the file never gets closed. The classic fix is <code>try/finally</code> — correct, but noisy. Python gives us a cleaner answer: the <code>with</code> statement and the objects behind it, <strong>context managers</strong>.</p>
+<p>A context manager is any object that defines two methods: <code>__enter__</code> and <code>__exit__</code>. The <code>with</code> statement calls <code>__enter__</code> when the block starts and <code>__exit__</code> when it ends, even if an exception blows up in the middle. Setup on entry, guaranteed cleanup on exit.</p>
+<p>This article covers: the <code>with</code> statement in one idea, context managers you already use (threading.Lock, decimal.localcontext), writing your own class-based timer, the easy way with <code>contextlib.contextmanager</code>, a real-world database transaction pattern, and common pitfalls like over-suppressing exceptions.</p>
+<p>Read the full article for runnable code examples of timers, transaction handling, <code>suppress()</code>, and <code>redirect_stdout()</code>.</p>
+      ]]></content:encoded>
+    </item>
+  </channel>
+</rss>
