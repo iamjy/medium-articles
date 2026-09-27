@@ -3,8 +3,80 @@
   <channel>
     <title>louis — Tech Articles for Medium</title>
     <link>https://iamjy.github.io/medium-articles/</link>
-    <description>Daily English tech articles (Python-Cookbook, DevOps, AI Context &amp; Prompt Engineering) for import into Medium publications.</description>
+    <description>Daily English tech articles (Python-Cookbook, DevOps, AI Context &amp; Prompt Engineering, Physical AI &amp; Digital Twins) for import into Medium publications.</description>
     <language>en</language>
+    <item>
+      <title>The Cyber-Physical Continuum: A 5-Layer Roadmap to Autonomous Manufacturing</title>
+      <link>https://iamjy.github.io/medium-articles/2026-10-03-cyber-physical-continuum.html</link>
+      <guid isPermaLink="true">https://iamjy.github.io/medium-articles/2026-10-03-cyber-physical-continuum.html</guid>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 +0900</pubDate>
+      <category>Physical AI &amp; Digital Twins</category>
+      <description>Physical AI, digital twins, threads, ontologies, and deterministic edge systems are not separate products — they are five interlocking layers of one cyber-physical continuum, and this capstone article maps the four priorities that turn them into truly autonomous manufacturing.</description>
+      <content:encoded><![CDATA[
+<p>The capstone of the 6-part series argues that physical AI, the digital thread, industrial ontologies, digital twins, and deterministic edge systems are not standalone solutions but five interlocking layers of a single cyber-physical continuum, from shop-floor robots (ISA-95 Level 0) up to ERP/PLM lifecycle decisions (Level 4). It lays out four implementation priorities: build the ISA-95/IOF ontology schema before adopting advanced AI, adopt ISO 23247 composable twins with explicit synchronization contracts instead of modeling whole factories, push NPU-equipped MCUs/MPUs and Zephyr RTOS to the field for millisecond local control, and close the Sim-to-Real gap by parallel-training thousands of virtual machines in Omniverse/Cosmos with field force-feedback data.</p>
+<p>The closing thesis: true autonomous manufacturing arrives only when physical intelligence, enterprise lifecycle knowledge, and virtual-validated, ultra-low-latency edge execution are tightly combined.</p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>The Return of Deterministic Edge Computing</title>
+      <link>https://iamjy.github.io/medium-articles/2026-10-02-deterministic-edge-computing.html</link>
+      <guid isPermaLink="true">https://iamjy.github.io/medium-articles/2026-10-02-deterministic-edge-computing.html</guid>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0900</pubDate>
+      <category>Physical AI &amp; Digital Twins</category>
+      <description>From Microchip’s Hailo acquisition to MCUs that talk, see, and navigate without the cloud, the center of gravity in embedded AI is shifting back to fully local deterministic hardware.</description>
+      <content:encoded><![CDATA[
+<p>The most interesting embedded systems being built today assume the network is optional. Microchip’s completed acquisition of Hailo pairs a broad MCU portfolio with ultra-low-power NPUs for industrial automation and robotics; Alif Semiconductor runs voice AI with hallucination-free deterministic retrieval entirely on a standalone MCU; GigaDevice demoed SLAM, vision, and motor control on a single 600 MHz Cortex-M7 MCU and joined the Zephyr RTOS; and Particle by Digi adds satellite-backed connectivity for places no cell tower reaches.</p>
+<p>The takeaway, per industry analysis: with industrial equipment lifecycles running 10–20 years, on-chip-complete processors immune to cloud shutdowns or license changes are becoming the absolute criterion for long-term hardware TCO.</p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>The Monolithic Digital Twin Is Dead: Composable Twins and Synchronization Contracts</title>
+      <link>https://iamjy.github.io/medium-articles/2026-10-01-monolithic-twin-is-dead.html</link>
+      <guid isPermaLink="true">https://iamjy.github.io/medium-articles/2026-10-01-monolithic-twin-is-dead.html</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0900</pubDate>
+      <category>Physical AI &amp; Digital Twins</category>
+      <description>The giant single-model digital twin decays into technical debt within months; composable architectures and explicit synchronization contracts are what make twins controllable by industrial AI.</description>
+      <content:encoded><![CDATA[
+<p>The monolithic digital twin — one giant model of an entire factory — falls out of sync within months and decays into un-updatable technical debt. The replacement is the composable twin, demonstrated by NIST on the ISO 23247-6 framework by composing independent robot-arm and gripper twins through standardized I/O interfaces, alongside real closed-loop examples like GE Vernova’s adaptive CFRP composite twin and Rock Tech Lithium’s lifecycle twin of its Red Rock converter plant.</p>
+<p>But composition alone isn’t enough: without an explicit synchronization design contract defining update cadence and maximum acceptable latency, a twin is just graphics and can never serve as the control basis for industrial AI agents.</p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>An Ontology Is Not a Graph Database: What Industrial AI Actually Needs</title>
+      <link>https://iamjy.github.io/medium-articles/2026-09-30-ontology-not-graph-database.html</link>
+      <guid isPermaLink="true">https://iamjy.github.io/medium-articles/2026-09-30-ontology-not-graph-database.html</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0900</pubDate>
+      <category>Physical AI &amp; Digital Twins</category>
+      <description>Plant floors keep mistaking a graph database for an industrial ontology; the TBox/ABox distinction is what decides whether AI agents become engineering assets or hallucination engines.</description>
+      <content:encoded><![CDATA[
+<p>Plant floors keep making the same grave mistake: buying a graph database, loading the asset list, and believing the industrial ontology is done. This article explains why an ontology is the TBox schema — classes, relations, and physical constraints — strictly separated from the ABox instance store that a graph database holds.</p>
+<p>It traces how the industry is standardizing on a three-layer stack (semantic model → domain ontology → knowledge graph), shows the pattern working in shipping products like Tatsoft FrameworX 10.1.5 with its 18 MCP tools, in Siemens’ multi-ontology workbench spanning ISA-95, OPC UA, Brick, and IEC 61850, and in MDPI-published research extracting failure knowledge from unstructured reports. The closing argument: treat ontology as a governance framework and semantic gatekeeper, not a store — only then will AI agents stop hallucinating and start engineering.</p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>The Digital Thread Is Becoming a Living System</title>
+      <link>https://iamjy.github.io/medium-articles/2026-09-29-digital-thread-living-system.html</link>
+      <guid isPermaLink="true">https://iamjy.github.io/medium-articles/2026-09-29-digital-thread-living-system.html</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0900</pubDate>
+      <category>Physical AI &amp; Digital Twins</category>
+      <description>The digital thread is evolving from a static system of record into a living, agentic decision backbone — and the operating numbers say the shift is real.</description>
+      <content:encoded><![CDATA[
+<p>The digital thread is shifting from a static system of record into an agentic decision backbone, where multi-agent systems orchestrate design change, simulation, manufacturability review, and scheduling as one loop. Aerospace leaders with unbroken threads cut engineering change cycles 20–30% and unplanned maintenance 20–30%, while open metrology interfaces now feed machine drift back into CAD/CAM in real time.</p>
+<p>Yet only ~14% of companies have an enterprise end-to-end thread; IT-led pilots stall while business-led programs deliver ROI. The article closes with Jason Kasper’s point: AI’s true industrial value is the decision, and without a living digital thread, AI just accelerates wrong decisions.</p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Physical AI Goes to Work: 7,000 Humanoids, Toyota’s $6.4B Bet, and the Race for the Physical Substrate</title>
+      <link>https://iamjy.github.io/medium-articles/2026-09-28-physical-ai-goes-to-work.html</link>
+      <guid isPermaLink="true">https://iamjy.github.io/medium-articles/2026-09-28-physical-ai-goes-to-work.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 +0900</pubDate>
+      <category>Physical AI &amp; Digital Twins</category>
+      <description>Humanoid robot shipments are projected to jump from 7,000 to 90,000 this year — but Toyota’s trillion-yen automation bet shows the real contest is over who owns the physical substrate and its data.</description>
+      <content:encoded><![CDATA[
+<p>In 2025 the world shipped about 7,000 humanoid robots, but most are lab pilots collecting training data — not working on production lines. Toyota is answering with a ~$6.4B-per-year automation plan starting 2028 targeting 400,000 intelligent robots, including a fully unmanned piston assembly line at its Kamigo plant.</p>
+<p>The article walks through the sim-to-real pipeline (NVIDIA Isaac Lab, Omniverse), Physical Intelligence’s action chunking and 5x-faster FAST tokenizer, Japan’s sovereign foundation-model project, and China’s 90%+ share of humanoid shipments. It closes on Beniamino Irdi’s thesis: hegemony in physical AI goes not to the best algorithm but to whoever deploys machines at scale and retrains on operational data — while Germany and Japan’s 90% grip on precision ball screws and reducers looms as a shared supply-chain risk.</p>
+      ]]></content:encoded>
+    </item>
     <item>
       <title>Python Context Managers: Write Cleaner, Safer Code with the with Statement</title>
       <link>https://iamjy.github.io/medium-articles/2026-09-28-python-context-managers.html</link>
