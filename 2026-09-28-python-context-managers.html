@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python Context Managers: Write Cleaner, Safer Code with the with Statement</title>
+<meta name="description" content="Learn how Python context managers work, why the with statement beats try/finally boilerplate, and how to write your own with classes or contextlib.">
+<style>
+body{font-family:Georgia,'Times New Roman',serif;max-width:700px;margin:0 auto;padding:2rem 1.25rem;line-height:1.75;color:#1a1a1a}
+h1{font-size:2rem;line-height:1.3}
+h2{font-size:1.4rem;margin-top:2.5rem}
+pre{background:#f4f4f4;padding:1rem;overflow-x:auto;border-radius:6px;font-size:.9rem;line-height:1.5}
+code{font-family:Menlo,Consolas,monospace}
+p code{background:#f4f4f4;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
+.meta{color:#666;font-size:.9rem}
+</style>
+</head>
+<body>
+<article>
+<p class="meta">Python-Cookbook &middot; September 28, 2026 &middot; 7 min read</p>
+<h1>Python Context Managers: Write Cleaner, Safer Code with the <code>with</code> Statement</h1>
+
+<p>If you followed this series, you already know how to read and write files with <code>open()</code>. You probably wrote something like this:</p>
+
+<pre><code>f = open("data.txt")
+text = f.read()
+f.close()</code></pre>
+
+<p>It works, but it has a quiet flaw: if an exception fires between <code>open()</code> and <code>close()</code>, the file never gets closed. Leaked file handles, locked resources, half-written data. The classic fix is <code>try/finally</code>:</p>
+
+<pre><code>f = open("data.txt")
+try:
+    text = f.read()
+finally:
+    f.close()</code></pre>
+
+<p>Correct, but noisy. Python gives us a cleaner answer: the <code>with</code> statement and the objects behind it, <strong>context managers</strong>.</p>
+
+<h2>The <code>with</code> Statement in One Idea</h2>
+
+<p>A context manager is any object that defines two methods: <code>__enter__</code> and <code>__exit__</code>. The <code>with</code> statement calls <code>__enter__</code> when the block starts and <code>__exit__</code> when it ends, even if an exception blows up in the middle.</p>
+
+<pre><code>with open("data.txt") as f:
+    text = f.read()
+# file is closed here, guaranteed</code></pre>
+
+<p>That is the whole contract: <strong>setup on entry, guaranteed cleanup on exit</strong>. Files are just the most famous example. The pattern shows up everywhere once you start looking: thread locks, database transactions, temporary directory changes, timers.</p>
+
+<h2>Context Managers You Already Use</h2>
+
+<p>The standard library is full of them. A <code>threading.Lock</code> releases itself:</p>
+
+<pre><code>import threading
+lock = threading.Lock()
+
+with lock:
+    # only one thread runs this block at a time
+    update_shared_counter()</code></pre>
+
+<p>The <code>decimal</code> module lets you scope precision changes so they never leak into the rest of your program:</p>
+
+<pre><code>from decimal import Decimal, localcontext
+
+with localcontext() as ctx:
+    ctx.prec = 50
+    result = Decimal(1) / Decimal(7)
+# precision is back to normal here</code></pre>
+
+<h2>Writing Your Own: The Class-Based Way</h2>
+
+<p>Suppose you want a simple timer for profiling code blocks. Define the two dunder methods:</p>
+
+<pre><code>import time
+
+class Timer:
+    def __enter__(self):
+        self.start = time.perf_counter()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        elapsed = time.perf_counter() - self.start
+        print(f"Elapsed: {elapsed:.3f}s")
+        # returning False (or nothing) lets exceptions propagate</code></pre>
+
+<pre><code>with Timer():
+    run_expensive_computation()
+# Elapsed: 2.314s</code></pre>
+
+<p>Notice the three arguments of <code>__exit__</code>. They carry the exception details if one occurred, or <code>None</code> if the block finished cleanly. If <code>__exit__</code> returns a truthy value, it <strong>suppresses</strong> the exception. That is powerful and easy to abuse, so suppress deliberately, not by accident.</p>
+
+<h2>The Easy Way: <code>contextlib.contextmanager</code></h2>
+
+<p>Writing a class for every small setup/teardown pair gets tedious. The <code>contextlib</code> module turns a generator function into a context manager. Everything before <code>yield</code> is setup, everything after is cleanup:</p>
+
+<pre><code>from contextlib import contextmanager
+
+@contextmanager
+def timer():
+    start = time.perf_counter()
+    try:
+        yield
+    finally:
+        elapsed = time.perf_counter() - start
+        print(f"Elapsed: {elapsed:.3f}s")</code></pre>
+
+<pre><code>with timer():
+    run_expensive_computation()</code></pre>
+
+<p>The <code>try/finally</code> inside the generator is the key: it guarantees cleanup runs even when the <code>with</code> block raises. This decorator form covers the vast majority of custom context managers you will ever write.</p>
+
+<p><code>contextlib</code> ships a few more tools worth knowing:</p>
+
+<pre><code>from contextlib import suppress, redirect_stdout
+import io
+
+# ignore a specific exception instead of try/except/pass
+with suppress(FileNotFoundError):
+    os.remove("temp.txt")
+
+# capture printed output
+buf = io.StringIO()
+with redirect_stdout(buf):
+    print("hello")
+captured = buf.getvalue()  # "hello\n"</code></pre>
+
+<h2>A Real-World Pattern: Database Transactions</h2>
+
+<p>Here is where the pattern earns its keep. A transaction must commit on success and roll back on failure, with no forgotten branches:</p>
+
+<pre><code>import sqlite3
+from contextlib import contextmanager
+
+@contextmanager
+def transaction(db_path):
+    conn = sqlite3.connect(db_path)
+    try:
+        yield conn
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()</code></pre>
+
+<pre><code>with transaction("app.db") as conn:
+    conn.execute("INSERT INTO users (name) VALUES (?)", ("ada",))
+    conn.execute("INSERT INTO audit (action) VALUES (?)", ("signup",))
+# both rows committed, or neither; connection always closed</code></pre>
+
+<p>Compare that with the manual version and the value is obvious: the cleanup policy lives in one place, and every caller gets it right by construction.</p>
+
+<h2>Common Pitfalls</h2>
+
+<p><strong>Forgetting that <code>__exit__</code> sees exceptions, not results.</strong> The three arguments describe a failure, not the block's return value. If you need the result, capture it inside the block.</p>
+
+<p><strong>Over-suppressing.</strong> Returning <code>True</code> from <code>__exit__</code> swallows exceptions silently. Reserve that for narrow, documented cases like <code>suppress()</code>, never as a default.</p>
+
+<p><strong>Doing real work in <code>__enter__</code> that can fail halfway.</strong> If setup itself needs cleanup, wrap it in <code>try/except</code> inside <code>__enter__</code> so a partial setup does not leak.</p>
+
+<h2>Wrapping Up</h2>
+
+<p>The <code>with</code> statement is Python's answer to a universal problem: resources must be released, and humans forget. Context managers move that responsibility from every call site into one well-tested object. You have used them since your first file tutorial; now you can recognize the pattern in locks, transactions, and temporary state, and you can build your own in five lines with <code>contextlib</code>.</p>
+
+<p>In the next installment of Python-Cookbook, we will put context managers to work on a bigger idea: writing decorators that time, cache, and retry your functions.</p>
+</article>
+</body>
+</html>
